@@ -5,9 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix",
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "npm run build && npm start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   },
   "repository": {
     "type": "git",
@@ -24,6 +31,11 @@
   "homepage": "https://github.com/NoobWolf1/number-guessing-game#readme",
   "devDependencies": {
     "@types/node": "^22.15.3",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
 }
