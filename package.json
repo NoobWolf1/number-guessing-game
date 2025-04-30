@@ -9,7 +9,8 @@
     "format": "eslint src/**/*.ts --fix",
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "npm run build && npm start"
+    "dev": "npm run build && npm start",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
