@@ -1,0 +1,39 @@
+{
+  "name": "number-guessing-game",
+  "version": "1.0.0",
+  "description": "A simple CLI based number guessing game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "npm run build && npm start",
+    "lint": "eslint 'src/**/*.{ts,js}'",
+    "format": "prettier --check 'src/**/*.{ts,js,json,md}'",
+    "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
+    "format:fix": "prettier --write 'src/**/*.{ts,js,json,md}'",
+    "fix": "npm run lint:fix && npm run format:fix",
+    "pre-commit": "npm run lint && npm run format"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoobWolf1/number-guessing-game.git"
+  },
+  "keywords": [
+    "Node.js"
+  ],
+  "author": "Malay Shukla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NoobWolf1/number-guessing-game/issues"
+  },
+  "homepage": "https://github.com/NoobWolf1/number-guessing-game#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}
