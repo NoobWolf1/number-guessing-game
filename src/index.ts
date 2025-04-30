@@ -12,16 +12,18 @@ const DIFFICULTY_CHANCES = {
     "3": 3
 } as const;
 
+const rl =  readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
 function guessingGame() {
   console.log("Welcome to the Number Guessing Game!");
   console.log("I'm thinking of a number between 1 and 100.");
   console.log("You have 5 chances to guess the correct number.");
   console.log("Please select the difficulty level:");
 
-  const rl =  readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
+  
   rl.question(
     `1. Easy (10 chances)
 2. Medium (5 chances)
@@ -38,12 +40,12 @@ function guessingGame() {
         console.log(outputMessage[inputVal]);
         console.log("Let's start the game!");
         let guesses = 0;
-        handleGuess(rl, number, chances, guesses);
+        handleGuess(number, chances, guesses);
         
     }
   );
 }
-function handlePlayAgain(rl: readline.Interface) {
+function handlePlayAgain() {
     rl.question(`Do you want to play again (y/n)?`, (input: string) => {
         if(input === 'y' || input === 'Y') {
             guessingGame();
@@ -53,11 +55,11 @@ function handlePlayAgain(rl: readline.Interface) {
     });
 }
 
-function handleGuess(rl: readline.Interface, number: number, chances : number, guesses: number) {
+function handleGuess(number: number, chances : number, guesses: number) {
     if(chances < 1) {
         console.log("You are out of chances.");
         console.log("The number was: "+number);
-        return handlePlayAgain(rl);
+        return handlePlayAgain();
     }
     rl.question(`Enter your choice:`, (guessedValue: string) => {
         guesses++;
@@ -66,14 +68,14 @@ function handleGuess(rl: readline.Interface, number: number, chances : number, g
         if(isNaN(guess) || guess < 1 || guess > 100)
         {
             console.log("Please enter a valid number under 1 and 100.")
-            return(handleGuess(rl, number, chances, guesses));
+            return(handleGuess(number, chances, guesses));
         }
         if(guessedValue === number.toString()) {
             console.log(`Congratulations! You guessed the correct number in ${guesses} attempts.`);
-            return handlePlayAgain(rl);
+            return handlePlayAgain();
         } else {
             console.log(`Incorrect! The number is`+  `${+guessedValue > +number ? ' lesser ' : ' greater '}` + `than ${guessedValue}.`);
-            return handleGuess(rl, number, chances, guesses);
+            return handleGuess(number, chances, guesses);
         }
     });
     
