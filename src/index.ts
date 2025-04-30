@@ -39,21 +39,28 @@ function guessingGame() {
     }
   );
 }
+function handlePlayAgain(rl: readline.Interface) {
+    rl.question(`Do you want to play again (y/n)?`, (input: string) => {
+        if(input === 'y' || input === 'Y') {
+            guessingGame();
+        } else {
+            rl.close();
+        }
+    });
+}
 
-function handleGuess(rl : readline.Interface, number: number, chances : number, guesses: number) {
+function handleGuess(rl: readline.Interface, number: number, chances : number, guesses: number) {
     if(chances < 1) {
-        console.log("You are out of chances.")
-        console.log("The number was: "+number)
-        rl.close();
-        return;
+        console.log("You are out of chances.");
+        console.log("The number was: "+number);
+        return handlePlayAgain(rl);
     }
     rl.question(`Enter your choice:`, (guessedValue: string) => {
         guesses++;
         chances--;
             if(guessedValue === number.toString()) {
                 console.log(`Congratulations! You guessed the correct number in ${guesses} attempts.`);
-                rl.close(); 
-                return;
+                return handlePlayAgain(rl);
             } else {
                 console.log(`Incorrect! The number is`+  `${+guessedValue > +number ? ' lesser ' : ' greater '}` + `than ${guessedValue}.`);
                 return handleGuess(rl, number, chances, guesses);
