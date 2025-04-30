@@ -30,6 +30,10 @@ function guessingGame() {
         const inputVal = data as keyof typeof DIFFICULTY_CHANCES;
         let chances = DIFFICULTY_CHANCES[inputVal];
         let number = Math.floor(Math.random() * 100) + 1;
+        if (!["1", "2", "3"].includes(data)) {
+            console.log("Invalid selection. Please enter 1, 2, or 3.");
+            return guessingGame();
+        }
         const outputMessage = data as keyof typeof DIFFICULTY_MESSAGE;
         console.log(outputMessage[inputVal]);
         console.log("Let's start the game!");
@@ -58,13 +62,19 @@ function handleGuess(rl: readline.Interface, number: number, chances : number, g
     rl.question(`Enter your choice:`, (guessedValue: string) => {
         guesses++;
         chances--;
-            if(guessedValue === number.toString()) {
-                console.log(`Congratulations! You guessed the correct number in ${guesses} attempts.`);
-                return handlePlayAgain(rl);
-            } else {
-                console.log(`Incorrect! The number is`+  `${+guessedValue > +number ? ' lesser ' : ' greater '}` + `than ${guessedValue}.`);
-                return handleGuess(rl, number, chances, guesses);
-            }
+        const guess = parseInt(guessedValue);
+        if(isNaN(guess) || guess < 1 || guess > 100)
+        {
+            console.log("Please enter a valid number under 1 and 100.")
+            return(handleGuess(rl, number, chances, guesses));
+        }
+        if(guessedValue === number.toString()) {
+            console.log(`Congratulations! You guessed the correct number in ${guesses} attempts.`);
+            return handlePlayAgain(rl);
+        } else {
+            console.log(`Incorrect! The number is`+  `${+guessedValue > +number ? ' lesser ' : ' greater '}` + `than ${guessedValue}.`);
+            return handleGuess(rl, number, chances, guesses);
+        }
     });
     
   }
