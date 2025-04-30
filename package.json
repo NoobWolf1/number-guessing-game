@@ -5,17 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix",
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "npm run build && npm start",
-    "prepare": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+    "lint": "eslint 'src/**/*.{ts,js}'",
+    "format": "prettier --check 'src/**/*.{ts,js,json,md}'",
+    "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
+    "format:fix": "prettier --write 'src/**/*.{ts,js,json,md}'",
+    "fix": "npm run lint:fix && npm run format:fix",
+    "pre-commit": "npm run lint && npm run format"
   },
   "repository": {
     "type": "git",
@@ -35,7 +33,6 @@
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
     "eslint": "^9.25.1",
-    "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   }
