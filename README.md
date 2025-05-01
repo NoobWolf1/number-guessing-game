@@ -2,6 +2,8 @@
 
 A simple command-line number guessing game built with Node.js. The game allows players to choose a difficulty level and try to guess a randomly generated number between 1 and 100.
 
+[Official problem statement is here] (https://roadmap.sh/projects/number-guessing-game)
+
 ## 🛠 Features
 
 - Choose from three difficulty levels:
