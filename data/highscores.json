@@ -1,0 +1,17 @@
+{
+  "easy": {
+    "guesses": 1,
+    "time": 3.0354186669999983,
+    "date": "2025-05-01T07:41:00.763Z"
+  },
+  "medium": {
+    "guesses": null,
+    "time": null,
+    "date": "2025-05-01T07:41:00.762Z"
+  },
+  "hard": {
+    "guesses": null,
+    "time": null,
+    "date": "2025-05-01T07:41:00.762Z"
+  }
+}

@@ -1,30 +1,90 @@
-# 🎲 Number Guessing Game (Node.js CLI)
+# Number Guessing Game
 
-A simple command-line number guessing game built with Node.js. The game allows players to choose a difficulty level and try to guess a randomly generated number between 1 and 100.
+A CLI-based number guessing game built with TypeScript following enterprise-level best practices.
 
-[Official problem statement is here] (https://roadmap.sh/projects/number-guessing-game)
+## Features
 
-## 🛠 Features
+- Three difficulty levels (Easy, Medium, Hard)
+- High score tracking
+- Timer to measure guessing speed
+- Hint system
+- Input validation
+- Detailed feedback during gameplay
 
-- Choose from three difficulty levels:
-  - **Easy**: 10 chances
-  - **Medium**: 5 chances
-  - **Hard**: 3 chances
-- Random number generation
-- Input validation for both difficulty and guesses
-- Replay option after each game
+## Project Structure
 
-## 🚀 Getting Started
+```
+number-guessing-game/
+├── src/
+│   ├── config.ts        # Game configuration and constants
+│   ├── game.ts          # Core game logic
+│   ├── index.ts         # Main entry point
+│   ├── types.ts         # Type definitions
+│   └── utils.ts         # Utility functions
+├── data/
+│   └── highscores.json  # High score storage (created automatically)
+├── package.json
+├── tsconfig.json
+├── .eslintrc.json
+└── README.md
+```
 
-### Prerequisites
+## Installation
 
-- [Node.js](https://nodejs.org/) (v14 or later)
+1. Clone the repository
+2. Install dependencies
+   ```
+   npm install
+   ```
 
-### Installation
+## Running the Game
 
-1. Clone the repository or copy the code into a file named `index.ts`.
-
-2. Run the game:
-
-```bash
+### Development Mode
+```
 npm run dev
+```
+
+### Production Mode
+```
+npm run build
+npm start
+```
+
+## Game Rules
+
+1. The computer randomly selects a number between 1 and 100
+2. Player selects a difficulty level:
+   - Easy: 10 chances
+   - Medium: 5 chances
+   - Hard: 3 chances
+3. Player guesses the number
+4. Feedback is provided after each guess
+5. Game ends when the player guesses correctly or runs out of chances
+6. High scores are tracked for each difficulty level
+
+## Commands
+
+- Enter a number between 1-100 to make a guess
+- Type "hint" to receive a clue (costs one chance)
+- After the game, type "y" or "yes" to play again
+
+## Development
+
+### Linting
+```
+npm run lint
+```
+
+### Testing
+```
+npm test
+```
+
+### Cleaning Build Files
+```
+npm run clean
+```
+
+## License
+
+MIT
