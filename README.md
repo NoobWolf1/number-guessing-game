@@ -20,7 +20,7 @@ A simple command-line number guessing game built with Node.js. The game allows p
 
 ### Installation
 
-1. Clone the repository or copy the code into a file named `index.ts` or `index.js`.
+1. Clone the repository or copy the code into a file named `index.ts`.
 
 2. Run the game:
 
